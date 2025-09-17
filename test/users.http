@@ -1,0 +1,20 @@
+@apiurl = http://localhost:6969/users
+
+GET {{apiurl}}
+
+###
+
+POST {{apiurl}}
+Content-Type: application/json
+
+
+###
+
+PATCH {{apiurl}}
+Content-Type: application/json
+
+
+###
+
+DELETE {{apiurl}}
+Content-Type: application/json
