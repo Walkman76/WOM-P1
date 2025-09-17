@@ -1,5 +1,5 @@
 const express = require('express')
-const notesRouter = require('./routes/notes')
+const usersRouter = require('./routes/notes')
 const PORT = process.env.PORT || 6969
 
 
