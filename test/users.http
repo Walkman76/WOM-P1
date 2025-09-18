@@ -1,6 +1,7 @@
 @apiurl = http://localhost:6969/users
 
 GET {{apiurl}}
+Content-Type: application/json
 
 ###
 
@@ -8,7 +9,8 @@ POST {{apiurl}}
 Content-Type: application/json
 
 {
-    "test": "Morjens"
+    "username": "Emil",
+    "password": "Secret"
 }
 
 ###
