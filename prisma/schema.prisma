@@ -7,12 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
+model User {
   id         Int       @id(map: "PK_notes") @default(autoincrement())
   created_at DateTime? @default(dbgenerated("(now())::timestamp(0) without time zone")) @db.Timestamp(6)
   updated_at DateTime? @default(dbgenerated("(now())::timestamp(0) without time zone")) @db.Timestamp(6)
   password   String    @db.VarChar
-  username   String?   @unique(map: "unique_username") @db.VarChar
+  username   String    @unique(map: "unique_username") @db.VarChar
 
   @@map("users")
 }

@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const router = express.Router()
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
+console.log('Prisma client properties:', Object.keys(prisma))
 
 router.get('/', (req, res) => {
     res.json({msg: "Users page"})
@@ -41,8 +42,8 @@ router.post('/', async (req, res) => {
       })
 
     } catch (error) {
-      console.error(error)
-      res.status(500).json({error: 'Serverfel!'})
-    }
+      console.error('Fel i POST /users:', error)
+      res.status(500).json({ error: 'Serverfel!', details: error.message })
+}
 })
 module.exports = router;

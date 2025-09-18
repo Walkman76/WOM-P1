@@ -9,7 +9,7 @@ POST {{apiurl}}
 Content-Type: application/json
 
 {
-    "username": "Emil",
+    "username": "Sebbe",
     "password": "Secret"
 }
 
