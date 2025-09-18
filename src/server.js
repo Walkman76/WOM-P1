@@ -1,13 +1,17 @@
 const express = require('express')
-const usersRouter = require('./routes/users')
-const PORT = process.env.PORT || 6969
-
-
 require('dotenv').config()
+const usersRouter = require('./routes/users')
+
+const PORT = process.env.PORT || 6969
 const app = express()
+
 console.log(`Node.js ${process.version}`)
 
 app.use(express.json())
+
+app.get('/', (req, res) => {
+    res.json({msg: "This prints!"})
+})
 
 app.use('/users', usersRouter)
 

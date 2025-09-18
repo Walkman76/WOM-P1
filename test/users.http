@@ -7,6 +7,9 @@ GET {{apiurl}}
 POST {{apiurl}}
 Content-Type: application/json
 
+{
+    "test": "Morjens"
+}
 
 ###
 
