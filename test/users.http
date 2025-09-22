@@ -1,17 +1,32 @@
 @apiurl = http://localhost:6969/users
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IlJGQzc1MTkifQ.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkVtaWwiLCJpYXQiOjE3MzYyOTIxMjR9.B4JZ543qG-mmB18294d1_9xppEbpomhBlOrXJrpf8Sk
 
 GET {{apiurl}}
 Content-Type: application/json
 
-###
+Authorization: Bearer {{token}}
+
+### Skapa ny användare
 
 POST {{apiurl}}
 Content-Type: application/json
 
 {
-    "username": "Sebbe",
+    "username": "Emil",
     "password": "Secret"
 }
+
+### Login
+
+POST {{apiurl}}/login
+Content-Type: application/json
+
+{
+    "username": "Herbert",
+    "password": "Secret"
+}
+
+
 
 ###
 

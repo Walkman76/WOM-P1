@@ -3,11 +3,25 @@ const bcrypt = require('bcryptjs')
 const router = express.Router()
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
-console.log('Prisma client properties:', Object.keys(prisma))
+const authorize = require('../middleware/authorize')
 
-router.get('/', (req, res) => {
-    res.json({msg: "Users page"})
+router.use(authorize)
+
+router.get('/', async (req, res) => {
+    try {
+      const user = await prisma.user.findMany({
+        where: {
+          id: Number(req.id)
+        }
+      })
+      res.json(user)
+    } catch (error){
+      console.log(error)
+      res.status(500).send({msg: "error"})
+    }
 })
+
+//ANVÄNDAR SKAPNING
 
 router.post('/', async (req, res) => {
     const { username, password } = req.body
@@ -45,5 +59,28 @@ router.post('/', async (req, res) => {
       console.error('Fel i POST /users:', error)
       res.status(500).json({ error: 'Serverfel!', details: error.message })
 }
+})
+
+//ANVÄNDAR LOGIN
+
+router.post('/login', async (req, res) => {
+  const user = await prisma.iser.findUnique({
+    where: { username: req.body.username}
+  })
+
+  if (user == null) return res.status(401).send({msg: "Authentication failed"})
+
+  const match = await bcrypt.compare(req.body.password, user.password)
+
+  if (!match) {
+    console.log('Bad password')
+    return res.status(401).send({msg: 'Authentication failed'})
+  }
+
+const token = await jwt.sign({
+  id: user.id,
+  name: user.username
+}, process.env.JWT_SECRET, {expiresIn: '30d'})
+
 })
 module.exports = router;

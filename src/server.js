@@ -1,9 +1,12 @@
 const express = require('express')
 require('dotenv').config()
+const cors = require('cors')
+
 const usersRouter = require('./routes/users')
 
 const PORT = process.env.PORT || 6969
 const app = express()
+app.use(cors)
 
 console.log(`Node.js ${process.version}`)
 
