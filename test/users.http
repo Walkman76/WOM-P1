@@ -8,7 +8,7 @@ Authorization: Bearer {{token}}
 
 ### Skapa ny användare
 
-POST {{apiurl}}
+POST {{apiurl}}/register
 Content-Type: application/json
 
 {

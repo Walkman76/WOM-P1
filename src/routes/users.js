@@ -24,7 +24,7 @@ router.get('/', authorize, async (req, res) => {
 
 //ANVÄNDAR SKAPNING
 
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     const { username, password } = req.body
 
     if (!username || !password)
