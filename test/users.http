@@ -12,7 +12,7 @@ POST {{apiurl}}/register
 Content-Type: application/json
 
 {
-    "username": "Jonas",
+    "username": "Emil",
     "password": "Secret"
 }
 
@@ -22,7 +22,7 @@ POST {{apiurl}}/login
 Content-Type: application/json
 
 {
-    "username": "Jonas",
+    "username": "Emil",
     "password": "Secret"
 }
 
