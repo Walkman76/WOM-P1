@@ -1,9 +1,9 @@
 @apiurl = http://localhost:6969/users
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IlJGQzc1MTkifQ.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkVtaWwiLCJpYXQiOjE3MzYyOTIxMjR9.B4JZ543qG-mmB18294d1_9xppEbpomhBlOrXJrpf8Sk
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkLDpHJ0aWwiLCJpYXQiOjE3NTg3MTQ0MjEsImV4cCI6MTc2MTMwNjQyMX0.C_yO-FauO12iMn6xWbmgiR6fYGSnSbz4yVfw5Sp0zRI
+
+###
 
 GET {{apiurl}}
-Content-Type: application/json
-
 Authorization: Bearer {{token}}
 
 ### Skapa ny användare
@@ -12,7 +12,7 @@ POST {{apiurl}}
 Content-Type: application/json
 
 {
-    "username": "Emil",
+    "username": "Bärtil",
     "password": "Secret"
 }
 
@@ -22,19 +22,7 @@ POST {{apiurl}}/login
 Content-Type: application/json
 
 {
-    "username": "Herbert",
+    "username": "Bärtil",
     "password": "Secret"
 }
 
-
-
-###
-
-PATCH {{apiurl}}
-Content-Type: application/json
-
-
-###
-
-DELETE {{apiurl}}
-Content-Type: application/json

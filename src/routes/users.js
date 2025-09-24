@@ -4,14 +4,15 @@ const router = express.Router()
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 const authorize = require('../middleware/authorize')
+const jwt = require('jsonwebtoken')
 
-router.use(authorize)
+//router.use(authorize)
 
-router.get('/', async (req, res) => {
+router.get('/', authorize, async (req, res) => {
     try {
       const user = await prisma.user.findMany({
         where: {
-          id: Number(req.id)
+          id: Number(req.user.id)
         }
       })
       res.json(user)
@@ -64,7 +65,8 @@ router.post('/', async (req, res) => {
 //ANVÄNDAR LOGIN
 
 router.post('/login', async (req, res) => {
-  const user = await prisma.iser.findUnique({
+  try {
+    const user = await prisma.user.findUnique({
     where: { username: req.body.username}
   })
 
@@ -77,10 +79,15 @@ router.post('/login', async (req, res) => {
     return res.status(401).send({msg: 'Authentication failed'})
   }
 
-const token = await jwt.sign({
-  id: user.id,
-  name: user.username
-}, process.env.JWT_SECRET, {expiresIn: '30d'})
+  const token = await jwt.sign({
+    id: user.id,
+    name: user.username
+  }, process.env.JWT_SECRET, {expiresIn: '30d'})
 
+    return res.status(200).json({ token })
+  } catch (error) {
+    console.error("Login error", error)
+    return res.status(500).json({msg: "Serverfel"})
+  }
 })
 module.exports = router;
