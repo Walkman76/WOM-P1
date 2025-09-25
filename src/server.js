@@ -8,7 +8,19 @@ const app = express()
 
 console.log(`Node.js ${process.version}`)
 
-app.use(cors())
+const allowedOrigin = ['https://wom-p1-frontend-1.onrender.com']
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigin.includes(origin)) {
+            callback(null, true)
+        } else {
+            callback(new Error("Not allowed by CORS"))
+        }
+    },
+    credentials: true
+}))
+ 
 
 app.use(express.json())
 

@@ -6,7 +6,7 @@
 GET {{apiurl}}
 Authorization: Bearer {{token}}
 
-### Skapa ny användare
+### Skapa ny användaredo
 
 POST {{apiurl}}/register
 Content-Type: application/json
