@@ -12,7 +12,7 @@ const allowedOrigin = [
     'https://wom-p1-frontend-1.onrender.com',
     'http://127.0.0.1:5501',
     'http://localhost:6969/users',
-    'http://127.0.0.1.5500'
+    'http://127.0.0.1:5500'
 ]
 
 app.use(cors({
